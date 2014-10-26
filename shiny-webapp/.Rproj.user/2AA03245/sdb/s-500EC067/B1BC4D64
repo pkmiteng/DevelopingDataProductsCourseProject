@@ -1,0 +1,16 @@
+{
+    "contents" : "---\ntitle       : Relationship between different variables and MPG\nsubtitle    : mtcars dataset\nauthor      : pinak\njob         : Presentation\nlogo        : logo.jpg\nframework   : io2012        # {io2012, html5slides, shower, dzslides, ...}\nhighlighter : highlight.js  # {highlight.js, prettify, highlight}\nhitheme     : solarized      # \nwidgets     : [bootstrap]            # {mathjax, quiz, bootstrap}\nmode        : selfcontained # {standalone, draft}\nknit        : slidify::knit2slides\n---\n\n## Deployed App\n\n### Automatic Vs Manual Regression Models Course Project  \n- URL: *https://github.com/pinakmishra/DevelopingDataProducts/blob/master/documentation/AutomaticVsManual.html*\n- Difference of the MPG between automatic and manual transmissions is focused in regression model project repost.\n\n### Shiny Application  \n- URL: *https://github.com/pinakmishra/DevelopingDataProducts/tree/master/shiny*\n- A shiny-App shows the relationship between variables and miles per gallon (MPG).\n\n### Reproducible Pitch Presentation  slidify\n- URL: *https://github.com/pinakmishra/DevelopingDataProducts/tree/master/slidify*\n- An awesome slidify presentation shows the relationship between variables and miles per gallon (MPG).\n\n### Get all SourceCode @Github:\n\n```\ngit clone https://github.com/swhgoon/devdataprod-cp.git\n```\n\n--- .class #id \n\n## mtcars dataset - Description\n\n### Motor Trend Car Road Tests\n\n> The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).\n\n### Source\n> Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391–411.\n\n```{r}\nlibrary(datasets)\nhead(mtcars, 3)\n```\n\n---\n\n## mtcars dataset - Format\n\n**A data frame with 32 observations on 11 variables.**\n\n| Index | Field | Detail |\n------- | ----- | ------ |\n| [, 1] | mpg | Miles/(US) gallon |\n| [, 2]  | cyl | Number of cylinders |\n| [, 3]  | disp | Displacement (cu.in.) |\n| [, 4]\t| hp | Gross horsepower |\n| [, 5]\t| drat | Rear axle ratio |\n| [, 6]\t| wt | Weight (lb/1000) |\n| [, 7]\t| qsec | 1/4 mile time |\n| [, 8]\t| vs | V/S |\n| [, 9]\t| am | Transmission (0 = automatic, 1 = manual) |\n| [,10]\t| gear | Number of forward gears |\n| [,11]\t| carb | Number of carburetors |\n\n---\n\n## Analysis - main code\n\n```r\n  formulaTextPoint <- reactive({\n    paste(\"mpg ~\", \"as.integer(\", input$variable, \")\")  })\n  \n  fit <- reactive({\n    lm(as.formula(formulaTextPoint()), data=mpgData)  })\n  ...\n  output$fit <- renderPrint({\n    summary(fit()) })\n  \n  output$mpgPlot <- renderPlot({\n    with(mpgData, {\n      plot(as.formula(formulaTextPoint()))\n      abline(fit(), col=2)\n    })  })\n\n```\n",
+    "created" : 1414344659186.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3783009795",
+    "id" : "B1BC4D64",
+    "lastKnownWriteTime" : 1414344816,
+    "path" : "C:/Users/pinakm7/DevelopingDataProducts/slidify/index.Rmd",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
